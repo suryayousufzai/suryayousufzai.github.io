@@ -1,1 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surya Yousufzai — Full-Stack Developer & WordPress Specialist</title>
 
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #080b0f; --bg2: #0d1117; --surface: #161d27; --border: #1e2a38;
+  --accent: #00d4ff; --accent2: #7c3aed; --accent3: #10b981;
+  --text: #e8edf3; --text2: #8899aa; --text3: #556677;
+  --display: 'Segoe UI', Arial, sans-serif;
+  --mono: 'Courier New', monospace;
+  --body: 'Segoe UI', Arial, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--body); overflow-x: hidden; }
+
+/* GRID BG */
+body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+
+/* NAV */
+nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(8,11,15,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--display); font-size: 20px; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-family: var(--mono); font-size: 13px; color: var(--text2); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+.nav-links a::before { content: attr(data-num); color: var(--accent); margin-right: 6px; font-size: 11px; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-family: var(--mono); font-size: 13px; padding: 10px 22px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; border-radius: 4px; transition: all 0.2s; }
+.nav-cta:hover { background: rgba(0,212,255,0.1); }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 60px 60px; position: relative; z-index: 1; }
+.hero-content { max-width: 800px; }
+.hero-greeting { font-family: var(--mono); font-size: 15px; color: var(--accent); margin-bottom: 24px; letter-spacing: 0.1em; }
+.hero-name { font-family: var(--display); font-size: clamp(52px, 8vw, 90px); font-weight: 800; line-height: 0.95; letter-spacing: -3px; margin-bottom: 24px; }
+.hero-name .line2 { display: block; color: var(--text3); }
+.hero-name .highlight { display: block; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 18px; color: var(--text2); line-height: 1.7; max-width: 540px; margin-bottom: 48px; }
+.hero-desc strong { color: var(--text); font-weight: 500; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--accent); color: var(--bg); font-family: var(--mono); font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 4px; transition: all 0.2s; }
+.btn-primary:hover { background: #33ddff; transform: translateY(-2px); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border: 1px solid var(--border); color: var(--text2); font-family: var(--mono); font-size: 14px; text-decoration: none; border-radius: 4px; transition: all 0.2s; }
+.btn-secondary:hover { border-color: var(--text2); color: var(--text); }
+.hero-stats { position: absolute; right: 60px; bottom: 80px; display: flex; flex-direction: column; gap: 32px; }
+.stat-num { font-family: var(--display); font-size: 40px; font-weight: 800; color: var(--text); line-height: 1; text-align: right; }
+.stat-num span { color: var(--accent); }
+.stat-label { font-family: var(--mono); font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; text-align: right; }
+
+/* SECTIONS */
+section { position: relative; z-index: 1; padding: 120px 60px; }
+.section-label { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
+.section-title { font-family: var(--display); font-size: clamp(36px, 5vw, 56px); font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 60px; color: var(--text); }
+.section-title em { font-style: normal; color: var(--text3); }
+
+/* ABOUT */
+#about { background: var(--bg2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.about-text p { font-size: 16px; color: var(--text2); line-height: 1.8; margin-bottom: 20px; }
+.about-text p strong { color: var(--text); font-weight: 500; }
+.about-info { display: flex; flex-direction: column; gap: 16px; }
+.info-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; transition: border-color 0.2s; }
+.info-item:hover { border-color: var(--accent); }
+.info-icon { font-size: 20px; width: 40px; text-align: center; flex-shrink: 0; }
+.info-label { font-family: var(--mono); font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; }
+.info-value { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 2px; }
+
+/* SKILLS */
+#skills { background: var(--bg); }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.skill-category { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+.skill-category::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
+.skill-category:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-4px); }
+.skill-category:hover::before { opacity: 1; }
+.skill-cat-title { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag { font-family: var(--mono); font-size: 12px; padding: 6px 12px; background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.15); color: var(--text2); border-radius: 4px; transition: all 0.2s; }
+.skill-tag:hover { background: rgba(0,212,255,0.1); border-color: var(--accent); color: var(--accent); }
+
+/* PROJECTS */
+#projects { background: var(--bg2); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; transition: all 0.3s; display: flex; flex-direction: column; position: relative; }
+.project-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.project-card.featured { grid-column: span 2; border-color: rgba(0,212,255,0.2); }
+.project-number { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; }
+.project-title { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; letter-spacing: -0.5px; }
+.project-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 24px; flex: 1; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.tech-badge { font-family: var(--mono); font-size: 11px; padding: 4px 10px; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); color: #a78bfa; border-radius: 3px; }
+.project-links { display: flex; gap: 16px; margin-top: auto; }
+.project-link { font-family: var(--mono); font-size: 13px; color: var(--accent); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(0,212,255,0.3); border-radius: 4px; transition: all 0.2s; }
+.project-link:hover { background: rgba(0,212,255,0.1); }
+.project-highlight { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; padding: 6px 12px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--accent3); border-radius: 4px; margin-bottom: 20px; }
+
+/* EXPERIENCE */
+#experience { background: var(--bg); }
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
+.timeline-item { position: relative; margin-bottom: 56px; }
+.timeline-item::before { content: ''; position: absolute; left: -36px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.timeline-date { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 10px; }
+.timeline-role { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.timeline-company { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
+.timeline-company .location { color: var(--text3); }
+.timeline-achievements { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.timeline-achievements li { font-size: 14px; color: var(--text2); line-height: 1.6; padding-left: 20px; position: relative; }
+.timeline-achievements li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+.timeline-achievements li strong { color: var(--text); font-weight: 500; }
+
+/* EDUCATION */
+#education { background: var(--bg2); }
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: all 0.3s; }
+.edu-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-4px); }
+.edu-icon { font-size: 32px; margin-bottom: 16px; }
+.edu-degree { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.edu-school { font-size: 14px; color: var(--accent); margin-bottom: 4px; font-weight: 500; }
+.edu-date { font-family: var(--mono); font-size: 12px; color: var(--text3); margin-bottom: 16px; }
+.edu-gpa { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; padding: 5px 10px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--accent3); border-radius: 4px; }
+
+/* CONTACT */
+#contact { background: var(--bg); }
+.contact-wrapper { max-width: 700px; }
+.contact-desc { font-size: 18px; color: var(--text2); line-height: 1.7; margin-bottom: 48px; }
+.contact-links { display: flex; flex-direction: column; gap: 16px; }
+.contact-item { display: flex; align-items: center; gap: 20px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; transition: all 0.3s; }
+.contact-item:hover { border-color: var(--accent); transform: translateX(8px); }
+.contact-icon { width: 44px; height: 44px; border-radius: 8px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.contact-info-label { font-family: var(--mono); font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.1em; }
+.contact-info-value { font-size: 15px; color: var(--text); font-weight: 500; margin-top: 2px; }
+.contact-arrow { margin-left: auto; color: var(--text3); font-size: 18px; transition: all 0.3s; }
+.contact-item:hover .contact-arrow { color: var(--accent); transform: translateX(4px); }
+
+/* FOOTER */
+footer { padding: 40px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+footer p { font-family: var(--mono); font-size: 12px; color: var(--text3); }
+footer span { color: var(--accent); }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 24px; }
+  #hero { padding: 100px 24px 80px; }
+  .hero-stats { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .project-card.featured { grid-column: span 1; }
+  footer { padding: 30px 24px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Surya<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about" data-num="01">About</a></li>
+    <li><a href="#skills" data-num="02">Skills</a></li>
+    <li><a href="#projects" data-num="03">Projects</a></li>
+    <li><a href="#experience" data-num="04">Experience</a></li>
+    <li><a href="#contact" data-num="05">Contact</a></li>
+  </ul>
+  <a href="mailto:surya.yousufzai@auaf.edu.af" class="nav-cta">Hire Me</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-content">
+    <p class="hero-greeting">// Hello, World! I'm</p>
+    <h1 class="hero-name">
+      Surya
+      <span class="line2">Yousufzai</span>
+      <span class="highlight">Developer</span>
+    </h1>
+    <p class="hero-desc">
+      <strong>Full-Stack Developer & WordPress Specialist</strong> based in Fribourg, Switzerland.
+      14 months of professional experience building responsive websites, custom themes, and modern web applications.
+      Computer Science student at AUAF, GPA 3.50.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="mailto:surya.yousufzai@auaf.edu.af" class="btn-secondary">Get In Touch ↗</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">14<span>mo</span></div>
+      <div class="stat-label">Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">40<span>%</span></div>
+      <div class="stat-label">Faster Load Times</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3.50</div>
+      <div class="stat-label">GPA Score</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15<span>+</span></div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Who I <em>Am</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Full-Stack Developer & WordPress Specialist</strong> currently based in Fribourg, Switzerland. I have 14 months of professional experience building responsive websites, custom themes, and mobile applications.</p>
+      <p>My journey started with a passion for building things on the web. I taught myself WordPress development and went on to work professionally at <strong>Thence Partners</strong> in Lugano, where I built custom themes, integrated React.js, and delivered an Android app with <strong>500+ downloads</strong> on Google Play.</p>
+      <p>I'm currently studying <strong>Computer Science</strong> at the American University of Afghanistan (graduating May 2027) while building my skills in TypeScript, Next.js, and modern frontend development.</p>
+      <p>Looking for opportunities where I can <strong>contribute meaningfully and grow</strong> into a world-class engineer.</p>
+    </div>
+    <div class="about-info">
+      <div class="info-item"><div class="info-icon">📍</div><div><div class="info-label">Location</div><div class="info-value">Fribourg, Switzerland</div></div></div>
+      <div class="info-item"><div class="info-icon">🎓</div><div><div class="info-label">Education</div><div class="info-value">B.CS Software Engineering — AUAF (2027)</div></div></div>
+      <div class="info-item"><div class="info-icon">💼</div><div><div class="info-label">Work Authorization</div><div class="info-value">Swiss B Permit (Unlimited)</div></div></div>
+      <div class="info-item"><div class="info-icon">🌍</div><div><div class="info-label">Languages</div><div class="info-value">English (Fluent) • German (A2) • Persian (Native)</div></div></div>
+      <div class="info-item"><div class="info-icon">✅</div><div><div class="info-label">Status</div><div class="info-value">Open to internships & junior roles</div></div></div>
+      <div class="info-item"><div class="info-icon">📧</div><div><div class="info-label">Email</div><div class="info-value">surya.yousufzai@auaf.edu.af</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title">What I <em>Know</em></h2>
+  <div class="skills-grid">
+    <div class="skill-category">
+      <div class="skill-cat-title">⚡ WordPress</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Custom Themes</span><span class="skill-tag">Template Hierarchy</span><span class="skill-tag">Custom Post Types</span><span class="skill-tag">ACF</span><span class="skill-tag">WordPress Hooks</span><span class="skill-tag">WP Query</span><span class="skill-tag">REST API</span><span class="skill-tag">WooCommerce</span><span class="skill-tag">Performance Opt.</span><span class="skill-tag">Security</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">🎨 Frontend</div>
+      <div class="skill-tags">
+        <span class="skill-tag">TypeScript</span><span class="skill-tag">React.js</span><span class="skill-tag">Next.js</span><span class="skill-tag">JavaScript ES6+</span><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3 / SCSS</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">Bootstrap</span><span class="skill-tag">Responsive Design</span><span class="skill-tag">CSS Grid & Flexbox</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">🔧 Backend & Database</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">RESTful APIs</span><span class="skill-tag">Database Design</span><span class="skill-tag">Node.js (basics)</span><span class="skill-tag">JSON</span><span class="skill-tag">API Integration</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-title">🛠️ Tools & Workflow</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Git & GitHub</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">VS Code</span><span class="skill-tag">Chrome DevTools</span><span class="skill-tag">Postman</span><span class="skill-tag">Composer / NPM</span><span class="skill-tag">Local by Flywheel</span><span class="skill-tag">Odoo CRM</span><span class="skill-tag">Android Studio</span><span class="skill-tag">Vercel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Featured Work</div>
+  <h2 class="section-title">What I've <em>Built</em></h2>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <div class="project-number">01 — Featured Project</div>
+      <div class="project-highlight">🌍 Built for askEarth Interview</div>
+      <div class="project-title">GeoWeather Dashboard</div>
+      <div class="project-desc">A real-time weather dashboard built with TypeScript, React 19, and Next.js 15. Features live weather data for any city worldwide using the free Open-Meteo API, 5-day forecast, dynamic backgrounds that change with weather conditions, Celsius/Fahrenheit toggle, and geolocation coordinates display. Demonstrates TypeScript interfaces, custom React hooks, union types, and REST API integration.</div>
+      <div class="project-tech">
+        <span class="tech-badge">TypeScript</span><span class="tech-badge">React 19</span><span class="tech-badge">Next.js 15</span><span class="tech-badge">Tailwind CSS</span><span class="tech-badge">Open-Meteo API</span><span class="tech-badge">Custom Hooks</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/suryayousufzai/geo-weather-dashboard" class="project-link" target="_blank">↗ GitHub</a>
+        <a href="https://geo-weather-dashboard.vercel.app" class="project-link" target="_blank">↗ Live Demo</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02 — React + WordPress</div>
+      <div class="project-title">WP Project Cost Calculator</div>
+      <div class="project-desc">Interactive multi-step project cost calculator built with React & TypeScript, integrated with WordPress REST API. Features live CHF price calculation, 3D animated payment card UI, volume discount logic, and quote submission to WordPress as a custom post type. Simulates a real Stripe payment flow.</div>
+      <div class="project-tech">
+        <span class="tech-badge">React.js</span><span class="tech-badge">TypeScript</span><span class="tech-badge">Next.js</span><span class="tech-badge">WordPress REST API</span><span class="tech-badge">Custom Hooks</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/suryayousufzai/wp-react-calculator" class="project-link" target="_blank">↗ GitHub</a>
+        <a href="https://wp-react-calculator.vercel.app" class="project-link" target="_blank">↗ Live Demo</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03 — WordPress Theme</div>
+      <div class="project-title">BizPro WordPress Theme</div>
+      <div class="project-desc">Custom WordPress business theme built completely from scratch following WordPress coding standards. Includes 3 custom post types (Services, Portfolio, Team), 8+ custom templates, and achieved 95+ mobile performance score through mobile-first responsive design with CSS Grid and lazy loading.</div>
+      <div class="project-tech">
+        <span class="tech-badge">WordPress</span><span class="tech-badge">PHP</span><span class="tech-badge">ACF</span><span class="tech-badge">CSS Grid</span><span class="tech-badge">JavaScript</span><span class="tech-badge">Git</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/suryayousufzai/bizpro-theme" class="project-link" target="_blank">↗ GitHub</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-label">Work History</div>
+  <h2 class="section-title">Where I've <em>Worked</em></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">March 2024 — May 2025 · 14 months</div>
+      <div class="timeline-role">Full-Stack Developer / WordPress Specialist</div>
+      <div class="timeline-company">Thence Partners <span class="location">· Lugano, Switzerland</span></div>
+      <ul class="timeline-achievements">
+        <li>Built <strong>responsive WordPress websites</strong> with custom themes, plugins, and content workflows</li>
+        <li>Integrated <strong>React.js with WordPress</strong> to create interactive calculation features</li>
+        <li>Developed and published <strong>Android application</strong> achieving 500+ Google Play downloads</li>
+        <li>Achieved <strong>40% improvement in page load times</strong> through performance optimization</li>
+        <li>Managed <strong>100+ customer entries</strong> in Odoo CRM across 15+ concurrent projects</li>
+        <li>Collaborated using <strong>Git workflows and Agile methodology</strong></li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">February 2024 — March 2024</div>
+      <div class="timeline-role">Community Host</div>
+      <div class="timeline-company">Impact Hub Ticino <span class="location">· Lugano, Switzerland</span></div>
+      <ul class="timeline-achievements">
+        <li>Facilitated operations for <strong>50+ entrepreneurs and tech professionals</strong></li>
+        <li>Organized networking events connecting developers, designers, and business professionals</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">January 2019 — January 2020</div>
+      <div class="timeline-role">IT Instructor</div>
+      <div class="timeline-company">Engineer Nesar Ahmad Walizada <span class="location">· Kabul, Afghanistan</span></div>
+      <ul class="timeline-achievements">
+        <li>Taught <strong>programming fundamentals</strong> (C++, Java) to 100+ students</li>
+        <li>Mentored students with <strong>80% achieving certification</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Where I <em>Study</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-degree">Bachelor of CS — Software Engineering</div>
+      <div class="edu-school">American University of Afghanistan</div>
+      <div class="edu-date">2022 — May 2027 (Expected)</div>
+      <div class="edu-gpa">⭐ GPA 3.50 / 4.00</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🏆</div>
+      <div class="edu-degree">Certifications</div>
+      <div class="edu-school">Various Institutions · 2019–2022</div>
+      <div class="edu-date"> </div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+        <li style="font-size:13px;color:var(--text2);">🏅 Advanced Coding — Womanity Foundation (2020)</li>
+        <li style="font-size:13px;color:var(--text2);">🏅 ICT Certification — Womanity Foundation (2019)</li>
+        <li style="font-size:13px;color:var(--text2);">🏅 STEM Boot Camp — AUAF (2022)</li>
+        <li style="font-size:13px;color:var(--text2);">🏅 President's Honor Award — AUAF (2023)</li>
+      </ul>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">📚</div>
+      <div class="edu-degree">Relevant Coursework</div>
+      <div class="edu-school">CS Courses · A grades</div>
+      <div class="edu-date"> </div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+        <li style="font-size:13px;color:var(--text2);">✅ Web Design & Development (A)</li>
+        <li style="font-size:13px;color:var(--text2);">✅ Software Engineering (A)</li>
+        <li style="font-size:13px;color:var(--text2);">✅ Data Structures (B)</li>
+        <li style="font-size:13px;color:var(--text2);">✅ Database Concepts (B+)</li>
+        <li style="font-size:13px;color:var(--text2);">✅ Programming II (A)</li>
+        <li style="font-size:13px;color:var(--text2);">📖 Algorithms (In Progress)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Let's <em>Connect</em></h2>
+  <div class="contact-wrapper">
+    <p class="contact-desc">I'm currently open to <strong>internships</strong> and <strong>junior developer roles</strong> in Switzerland and remote. My inbox is always open.</p>
+    <div class="contact-links">
+      <a href="mailto:surya.yousufzai@auaf.edu.af" class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div><div class="contact-info-label">Email</div><div class="contact-info-value">surya.yousufzai@auaf.edu.af</div></div>
+        <div class="contact-arrow">→</div>
+      </a>
+      <a href="https://github.com/suryayousufzai" class="contact-item" target="_blank">
+        <div class="contact-icon">🐙</div>
+        <div><div class="contact-info-label">GitHub</div><div class="contact-info-value">github.com/suryayousufzai</div></div>
+        <div class="contact-arrow">→</div>
+      </a>
+      <a href="tel:+41762732297" class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div><div class="contact-info-label">Phone</div><div class="contact-info-value">+41 76 273 22 97</div></div>
+        <div class="contact-arrow">→</div>
+      </a>
+      <a href="https://linkedin.com/in/suryayousufzai" class="contact-item" target="_blank">
+        <div class="contact-icon">💼</div>
+        <div><div class="contact-info-label">LinkedIn</div><div class="contact-info-value">linkedin.com/in/suryayousufzai</div></div>
+        <div class="contact-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by <span>Surya Yousufzai</span> · Fribourg, Switzerland</p>
+  <p>TypeScript · React · WordPress · Next.js · <span>2026</span></p>
+</footer>
+
+<script>
+  // Scroll active nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 200) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? '#e8edf3' : '#8899aa'; });
+  });
+</script>
+</body>
+</html>
