@@ -74,15 +74,21 @@ section { position: relative; z-index: 1; padding: 120px 60px; }
 .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; transition: all 0.3s; display: flex; flex-direction: column; position: relative; }
 .project-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
 .project-card.featured { grid-column: span 2; border-color: rgba(0,212,255,0.2); }
+.project-card.live { border-color: rgba(16,185,129,0.3); }
+.project-card.live:hover { border-color: rgba(16,185,129,0.6); }
 .project-number { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; }
 .project-title { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 12px; letter-spacing: -0.5px; }
 .project-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 24px; flex: 1; }
 .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .tech-badge { font-family: var(--mono); font-size: 11px; padding: 4px 10px; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); color: #a78bfa; border-radius: 3px; }
-.project-links { display: flex; gap: 16px; margin-top: auto; }
+.project-links { display: flex; gap: 16px; margin-top: auto; flex-wrap: wrap; }
 .project-link { font-family: var(--mono); font-size: 13px; color: var(--accent); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(0,212,255,0.3); border-radius: 4px; transition: all 0.2s; }
 .project-link:hover { background: rgba(0,212,255,0.1); }
+.project-link.wp-link { color: var(--accent3); border-color: rgba(16,185,129,0.3); }
+.project-link.wp-link:hover { background: rgba(16,185,129,0.1); }
 .project-highlight { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; padding: 6px 12px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--accent3); border-radius: 4px; margin-bottom: 20px; }
+.project-highlight.red { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.2); color: #f87171; }
+.project-highlight.blue { background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.2); color: var(--accent); }
 #experience { background: var(--bg); }
 .timeline { position: relative; padding-left: 32px; }
 .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
@@ -172,15 +178,15 @@ footer span { color: var(--accent); }
       <div class="stat-label">Experience</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">40<span>%</span></div>
-      <div class="stat-label">Faster Load Times</div>
+      <div class="stat-num">1</div>
+      <div class="stat-label">Published Plugin</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">3.50</div>
       <div class="stat-label">GPA Score</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">6<span>+</span></div>
+      <div class="stat-num">7<span>+</span></div>
       <div class="stat-label">GitHub Projects</div>
     </div>
   </div>
@@ -193,16 +199,16 @@ footer span { color: var(--accent); }
     <div class="about-text">
       <p>I'm a <strong>Full-Stack Developer & WordPress Specialist</strong> currently based in Fribourg, Switzerland. I have 14 months of professional experience building responsive websites, custom themes, and mobile applications.</p>
       <p>My journey started with a passion for building things on the web. I taught myself WordPress development and went on to work professionally at <strong>Thence Partners</strong> in Lugano, where I built custom themes, integrated React.js, and delivered an Android app with <strong>500+ downloads</strong> on Google Play.</p>
+      <p>I recently published my first plugin — <strong>Swiss Business Suite</strong> — on the official WordPress.org directory, a production-grade tool for Swiss SMEs with booking, invoicing, and Swiss QR-Bill support.</p>
       <p>I'm currently studying <strong>Computer Science</strong> at the American University of Afghanistan (graduating May 2027) while building my skills in TypeScript, Next.js, and modern frontend development.</p>
-      <p>Looking for opportunities where I can <strong>contribute meaningfully and grow</strong> into a world-class engineer.</p>
     </div>
     <div class="about-info">
       <div class="info-item"><div class="info-icon">📍</div><div><div class="info-label">Location</div><div class="info-value">Fribourg, Switzerland</div></div></div>
       <div class="info-item"><div class="info-icon">🎓</div><div><div class="info-label">Education</div><div class="info-value">B.CS Software Engineering — AUAF (2027)</div></div></div>
       <div class="info-item"><div class="info-icon">💼</div><div><div class="info-label">Work Authorization</div><div class="info-value">Swiss B Permit (Unlimited)</div></div></div>
-      <div class="info-item"><div class="info-icon">🌍</div><div><div class="info-label">Languages</div><div class="info-value">English (Fluent) • German (A2) • Persian (Native)</div></div></div>
+      <div class="info-item"><div class="info-icon">🌍</div><div><div class="info-label">Languages</div><div class="info-value">English (Fluent) · German (A2) · Persian (Native)</div></div></div>
+      <div class="info-item"><div class="info-icon">🔌</div><div><div class="info-label">WordPress.org</div><div class="info-value">1 Published Plugin · Swiss Business Suite</div></div></div>
       <div class="info-item"><div class="info-icon">✅</div><div><div class="info-label">Status</div><div class="info-value">Open to internships & junior roles</div></div></div>
-      <div class="info-item"><div class="info-icon">📧</div><div><div class="info-label">Email</div><div class="info-value"><script>document.write(atob("c3VyeWEueW91c3VmemFpQGF1YWYuZWR1LmFm"))</script></div></div></div>
     </div>
   </div>
 </section>
@@ -214,7 +220,7 @@ footer span { color: var(--accent); }
     <div class="skill-category">
       <div class="skill-cat-title">⚡ WordPress</div>
       <div class="skill-tags">
-        <span class="skill-tag">Custom Themes</span><span class="skill-tag">Template Hierarchy</span><span class="skill-tag">Custom Post Types</span><span class="skill-tag">ACF</span><span class="skill-tag">WordPress Hooks</span><span class="skill-tag">WP Query</span><span class="skill-tag">REST API</span><span class="skill-tag">WooCommerce</span><span class="skill-tag">Performance Opt.</span><span class="skill-tag">Security</span>
+        <span class="skill-tag">Custom Themes</span><span class="skill-tag">Template Hierarchy</span><span class="skill-tag">Custom Post Types</span><span class="skill-tag">ACF</span><span class="skill-tag">WordPress Hooks</span><span class="skill-tag">WP Query</span><span class="skill-tag">REST API</span><span class="skill-tag">WooCommerce</span><span class="skill-tag">Performance Opt.</span><span class="skill-tag">Security</span><span class="skill-tag">SVN / Plugin Directory</span>
       </div>
     </div>
     <div class="skill-category">
@@ -226,13 +232,13 @@ footer span { color: var(--accent); }
     <div class="skill-category">
       <div class="skill-cat-title">🔧 Backend & Database</div>
       <div class="skill-tags">
-        <span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span><span class="skill-tag">RESTful APIs</span><span class="skill-tag">Database Design</span><span class="skill-tag">Node.js (basics)</span><span class="skill-tag">JSON</span><span class="skill-tag">API Integration</span>
+        <span class="skill-tag">PHP</span><span class="skill-tag">Python</span><span class="skill-tag">MySQL</span><span class="skill-tag">RESTful APIs</span><span class="skill-tag">Database Design</span><span class="skill-tag">Node.js (basics)</span><span class="skill-tag">JSON</span><span class="skill-tag">API Integration</span>
       </div>
     </div>
     <div class="skill-category">
       <div class="skill-cat-title">🛠️ Tools & Workflow</div>
       <div class="skill-tags">
-        <span class="skill-tag">Git & GitHub</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">VS Code</span><span class="skill-tag">Chrome DevTools</span><span class="skill-tag">Postman</span><span class="skill-tag">Composer / NPM</span><span class="skill-tag">Local by Flywheel</span><span class="skill-tag">Odoo CRM</span><span class="skill-tag">Android Studio</span><span class="skill-tag">Vercel</span>
+        <span class="skill-tag">Git & GitHub</span><span class="skill-tag">SVN</span><span class="skill-tag">Agile / Scrum</span><span class="skill-tag">VS Code</span><span class="skill-tag">Chrome DevTools</span><span class="skill-tag">Postman</span><span class="skill-tag">Composer / NPM</span><span class="skill-tag">Local by Flywheel</span><span class="skill-tag">Odoo CRM</span><span class="skill-tag">Vercel</span>
       </div>
     </div>
   </div>
@@ -256,9 +262,23 @@ footer span { color: var(--accent); }
       </div>
     </div>
 
-    <div class="project-card featured">
+    <div class="project-card featured live">
       <div class="project-number">02 — Featured Project</div>
-      <div class="project-highlight">🌍 Built for askEarth Interview</div>
+      <div class="project-highlight">✅ Live on WordPress.org — Approved March 2026</div>
+      <div class="project-title">Swiss Business Suite — WordPress Plugin</div>
+      <div class="project-desc">All-in-one production-grade WordPress plugin for Swiss small businesses — officially approved and published on the WordPress.org plugin directory. Features a full multilingual system supporting DE/FR/IT/EN with a professional Swiss-style language switcher, a complete booking & appointment system with AJAX time-slot management and email confirmations, and a Swiss QR-Bill invoice generator with correct QRR reference checksums compliant with Swiss banking standards. Built with OOP PHP, 5 custom database tables, nonce verification, full input sanitization, and a complete admin dashboard. Went through multiple rounds of WordPress.org security review and passed all guidelines.</div>
+      <div class="project-tech">
+        <span class="tech-badge">OOP PHP</span><span class="tech-badge">Swiss QR-Bill</span><span class="tech-badge">Multilingual DE/FR/IT/EN</span><span class="tech-badge">AJAX</span><span class="tech-badge">Custom DB Tables</span><span class="tech-badge">WordPress Security</span><span class="tech-badge">SVN Deploy</span><span class="tech-badge">wp_remote_get</span>
+      </div>
+      <div class="project-links">
+        <a href="https://wordpress.org/plugins/swiss-business-suite/" class="project-link wp-link" target="_blank">🔌 WordPress.org</a>
+        <a href="https://github.com/suryayousufzai/wp-swiss-business-suite" class="project-link" target="_blank">↗ GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card featured">
+      <div class="project-number">04 — Featured Project</div>
+      <div class="project-highlight blue">🌍 Real Time Weather Dashboard</div>
       <div class="project-title">GeoWeather Dashboard</div>
       <div class="project-desc">A real-time weather dashboard built with TypeScript, React 19, and Next.js 15. Features live weather data for any city worldwide using the free Open-Meteo API, 5-day forecast, dynamic backgrounds that change with weather conditions, Celsius/Fahrenheit toggle, and geolocation coordinates display. Demonstrates TypeScript interfaces, custom React hooks, union types, and REST API integration.</div>
       <div class="project-tech">
@@ -271,7 +291,7 @@ footer span { color: var(--accent); }
     </div>
 
     <div class="project-card">
-      <div class="project-number">03 — React + WordPress</div>
+      <div class="project-number">05 — React + WordPress</div>
       <div class="project-title">WP Project Cost Calculator</div>
       <div class="project-desc">Interactive multi-step project cost calculator built with React & TypeScript, integrated with WordPress REST API. Features live CHF price calculation, 3D animated payment card UI, volume discount logic, and quote submission to WordPress as a custom post type. Simulates a real Stripe payment flow.</div>
       <div class="project-tech">
@@ -284,9 +304,9 @@ footer span { color: var(--accent); }
     </div>
 
     <div class="project-card">
-      <div class="project-number">04 — WordPress Plugin</div>
+      <div class="project-number">06 — WordPress Plugin</div>
       <div class="project-title">WP Smart Contact Plugin</div>
-      <div class="project-desc">Professional WordPress contact form plugin built with OOP PHP following WordPress coding standards. Features [smart_contact] shortcode, AJAX form submission, custom post type storage, admin dashboard with unread indicators, email notifications, and full settings page. Demonstrates advanced WordPress plugin architecture.</div>
+      <div class="project-desc">Professional WordPress contact form plugin built with OOP PHP following WordPress coding standards. Features [smart_contact] shortcode, AJAX form submission, custom post type storage, admin dashboard with unread indicators, email notifications, and full settings page.</div>
       <div class="project-tech">
         <span class="tech-badge">OOP PHP</span><span class="tech-badge">WordPress Hooks</span><span class="tech-badge">AJAX</span><span class="tech-badge">Custom Post Types</span><span class="tech-badge">Settings API</span><span class="tech-badge">jQuery</span>
       </div>
@@ -296,20 +316,7 @@ footer span { color: var(--accent); }
     </div>
 
     <div class="project-card">
-      <div class="project-number">05 — WordPress Plugin</div>
-      <div class="project-highlight">🇨🇭 Built for Swiss SMEs</div>
-      <div class="project-title">WP Swiss Business Suite</div>
-      <div class="project-desc">All-in-one WordPress plugin for Swiss small businesses. Features a multilingual system supporting DE/FR/IT/EN with a professional Swiss-style language switcher, a full booking & appointment system with AJAX time-slot management and email confirmations, and a Swiss QR-Bill invoice generator with correct QRR reference checksums — compliant with Swiss payment standards. Built with OOP PHP, 5 custom DB tables, and a full admin dashboard.</div>
-      <div class="project-tech">
-        <span class="tech-badge">OOP PHP</span><span class="tech-badge">Swiss QR-Bill</span><span class="tech-badge">Multilingual</span><span class="tech-badge">AJAX</span><span class="tech-badge">Custom DB Tables</span><span class="tech-badge">WordPress Hooks</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/suryayousufzai/wp-swiss-business-suite" class="project-link" target="_blank">↗ GitHub</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-number">06 — WordPress Theme</div>
+      <div class="project-number">07 — WordPress Theme</div>
       <div class="project-title">BizPro WordPress Theme</div>
       <div class="project-desc">Custom WordPress business theme built completely from scratch following WordPress coding standards. Includes 3 custom post types (Services, Portfolio, Team), 8+ custom templates, and achieved 95+ mobile performance score through mobile-first responsive design with CSS Grid and lazy loading.</div>
       <div class="project-tech">
@@ -341,6 +348,16 @@ footer span { color: var(--accent); }
       </ul>
     </div>
     <div class="timeline-item">
+      <div class="timeline-date">December 2025 — Present</div>
+      <div class="timeline-role">Solo Developer — POS System</div>
+      <div class="timeline-company">RAPIDEZONE Sárl <span class="location">· Fribourg, Switzerland</span></div>
+      <ul class="timeline-achievements">
+        <li>Built a <strong>complete Point of Sale system</strong> in Python from scratch, currently in live production use</li>
+        <li>Handles <strong>real daily sales, receipts, and reports</strong> for the shop</li>
+        <li>Integrated <strong>EPSON thermal printer, barcode scanning</strong>, and Swiss VAT compliance</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
       <div class="timeline-date">November 2025 — Present</div>
       <div class="timeline-role">Math Tutor (Volunteer)</div>
       <div class="timeline-company">Swiss Red Cross <span class="location">· Bern, Switzerland</span></div>
@@ -355,7 +372,7 @@ footer span { color: var(--accent); }
       <div class="timeline-company">Impact Hub Ticino <span class="location">· Bern, Switzerland</span></div>
       <ul class="timeline-achievements">
         <li>Supported daily coworking operations and facilitated <strong>networking events</strong> for 50+ entrepreneurs and tech professionals</li>
-        <li>Welcomed members and contributed to a <strong>collaborative community</strong>, enhancing engagement and professional connections</li>
+        <li>Welcomed members and contributed to a <strong>collaborative community</strong></li>
       </ul>
     </div>
     <div class="timeline-item">
@@ -363,7 +380,7 @@ footer span { color: var(--accent); }
       <div class="timeline-role">IT Instructor</div>
       <div class="timeline-company">Engineer Nesar Ahmad Walizada <span class="location">· Kabul, Afghanistan</span></div>
       <ul class="timeline-achievements">
-        <li>Taught <strong>basic ICT skills</strong> including Microsoft Office (Word, Excel, PowerPoint) and fundamental computer literacy</li>
+        <li>Taught <strong>basic ICT skills</strong> including Microsoft Office and fundamental computer literacy</li>
         <li>Guided students in using <strong>computers, internet tools</strong>, and essential digital applications</li>
       </ul>
     </div>
@@ -418,7 +435,7 @@ footer span { color: var(--accent); }
     <div class="contact-links">
       <a href="mailto:surya.yousufzai@auaf.edu.af" class="contact-item">
         <div class="contact-icon">📧</div>
-        <div><div class="contact-info-label">Email</div><div class="contact-info-value"><script>document.write(atob("c3VyeWEueW91c3VmemFpQGF1YWYuZWR1LmFm"))</script></div></div>
+        <div><div class="contact-info-label">Email</div><div class="contact-info-value">surya.yousufzai@auaf.edu.af</div></div>
         <div class="contact-arrow">→</div>
       </a>
       <a href="https://github.com/suryayousufzai" class="contact-item" target="_blank">
@@ -431,13 +448,18 @@ footer span { color: var(--accent); }
         <div><div class="contact-info-label">LinkedIn</div><div class="contact-info-value">linkedin.com/in/suryayousufzai</div></div>
         <div class="contact-arrow">→</div>
       </a>
+      <a href="https://wordpress.org/plugins/swiss-business-suite/" class="contact-item" target="_blank">
+        <div class="contact-icon">🔌</div>
+        <div><div class="contact-info-label">WordPress.org</div><div class="contact-info-value">Swiss Business Suite Plugin</div></div>
+        <div class="contact-arrow">→</div>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <p>Built by <span>Surya Yousufzai</span> · Fribourg, Switzerland</p>
-  <p>TypeScript · React · WordPress · Next.js · <span>2026</span></p>
+  <p>TypeScript · React · WordPress · Python · <span>2026</span></p>
 </footer>
 
 </body>
